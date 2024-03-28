@@ -18,8 +18,14 @@
     align-items: center;
     overflow: hidden;
     max-height: 3rem;
-    width: 20rem;
-    transition: bottom 0.5s ease, width 0.5s ease, filter 0.5s;
+    width: 18rem;
+    opacity: 1;
+    transition: bottom 0.5s ease, filter 0.5s ease, opacity 0.2s ease, right 0.5s ease, width 0.5s ease-out;
+}
+.message-remove{
+    position: absolute;
+    right: 20% !important;
+    opacity: 0;
 }
 
 #expand-button {
@@ -45,7 +51,7 @@
     filter: brightness(100%);
     bottom: 1rem;
     right: 0rem;
-    width: 22rem;
+    width: 20rem;
 }
 
 .message-2 {
@@ -53,7 +59,7 @@
     filter: brightness(90%);
     bottom: 0.5rem;
     right: 0.5rem;
-    width: 21rem;
+    width: 19rem;
 }
 
 .message-1 {
@@ -61,7 +67,7 @@
     filter: brightness(80%);
     bottom: 0rem;
     right: 1rem;
-    width: 20rem;
+    width: 18rem;
 }
 
 .message {
@@ -69,7 +75,7 @@
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
-    max-width: 20rem;
+    max-width: 18rem;
 }
 
 

@@ -11,22 +11,11 @@ interface NotifyProps {
 
 const Notify: React.FC<NotifyProps> = React.memo(({ onClose, messages }) => {
   const [expanded, setExpanded] = useState<boolean>(false);
+  const [removeAll, setRemoveAll] = useState<boolean>(false);
   const [toastMessages, setToastMessages] = useState<NotifyMessageType[]>(messages);
+  const [removingMessage, setRemovingMessage] = useState<number>()
   const notifyRef = useRef<HTMLDivElement>(null);
 
-  useEffect(() => {
-    const handleClickOutside = (event: MouseEvent) => {
-      if (notifyRef.current && !notifyRef.current.contains(event.target as Node)) {
-        setExpanded(false);
-      }
-    };
-
-    document.addEventListener('mousedown', handleClickOutside);
-
-    return () => {
-      document.removeEventListener('mousedown', handleClickOutside);
-    };
-  }, []);
 
   const getIcon = (type: string) => {
     switch (type) {
@@ -43,12 +32,42 @@ const Notify: React.FC<NotifyProps> = React.memo(({ onClose, messages }) => {
     }
   };
 
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      if (notifyRef.current && !notifyRef.current.contains(event.target as Node)) {
+        setExpanded(false);
+      }
+    };
+
+    document.addEventListener('mousedown', handleClickOutside);
+
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside);
+    };
+  }, []);
+
   const truncateMessage = (message: string): string => {
     return message.length > 100 ? message.slice(0, 100) + '...' : message;
   };
 
   const handleToggleExpand = () => {
-    expanded ? setToastMessages([]) : setExpanded(!expanded)
+    if (expanded) {
+      setRemoveAll(true)
+      setTimeout(() => { setToastMessages([]) }, 200)
+    } else {
+      setExpanded(!expanded)
+    }
+  };
+  const handleRemoveMessage = (id: number) => {
+    if (expanded) {
+      setRemovingMessage(id)
+      setTimeout(() => {
+        const filteredMessage = toastMessages.filter(message => message.id !== id)
+        setToastMessages(filteredMessage)
+      }, 200);
+    } else {
+      setExpanded(!expanded)
+    }
   };
 
   return (
@@ -57,17 +76,17 @@ const Notify: React.FC<NotifyProps> = React.memo(({ onClose, messages }) => {
         <img
           id='expand-button'
           onClick={handleToggleExpand}
-          className='notify-message'
+          className={`notify-message ${removeAll || (toastMessages.length === 1 && toastMessages[0].id === removingMessage) ? 'message-remove' : ''}`}
           src={expanded ? CancelSVG : ExpandSVG}
           alt={expanded ? 'cancel' : 'expand'}
-          style={expanded ? { bottom: `${messages.length * 5}rem` } : {}}
+          style={expanded ? { bottom: `${toastMessages.length * 5}rem` } : {}}
         />
       )}
       {toastMessages.map((message, index) => (
         <div
-          onClick={handleToggleExpand}
+          onClick={() => handleRemoveMessage(message.id)}
           key={message.id}
-          className={`notify-message ${message.type} message-${3 - index}`}
+          className={`notify-message ${message.type} message-${3 - index} ${removingMessage === message.id || removeAll ? 'message-remove' : ''}`}
           style={expanded ? { bottom: `${(toastMessages.length - 1 - index) * 5}rem`, filter: 'brightness(100%)' } : {}}
         >
           <span className="message-icon">{getIcon(message.type)}</span>
