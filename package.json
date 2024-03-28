@@ -1,13 +1,17 @@
 {
   "name": "3dothub",
   "private": false,
-  "version": "2.0.0",
+  "version": "2.0.2",
   "type": "module",
+  "main": "src/index.tsx",
+  "modules": "src/index.tsx",
+  "types": "src/types/index.d.ts",
   "scripts": {
     "dev": "vite",
     "build": "tsc && vite build",
     "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "publish": "npm version minor && npm publish"
   },
   "dependencies": {
     "react": "^18.2.0",
@@ -22,6 +26,7 @@
     "eslint": "^8.57.0",
     "eslint-plugin-react-hooks": "^4.6.0",
     "eslint-plugin-react-refresh": "^0.4.6",
+    "rollup": "^4.13.2",
     "typescript": "^5.2.2",
     "vite": "^5.2.0"
   }
