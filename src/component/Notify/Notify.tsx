@@ -3,6 +3,11 @@ import './Notify.css';
 import { NotifyMessageType } from '../../types';
 import CancelSVG from '../../assets/cancel.svg';
 import ExpandSVG from '../../assets/expand.svg';
+import SuccessSVG from '../../assets/success.svg'
+import ErrorSVG from '../../assets/error.svg'
+import WarningSVG from '../../assets/warning.svg'
+import NotificationSVG from '../../assets/notification.svg'
+import InfoSVG from '../../assets/info.svg'
 
 interface NotifyProps {
   onClose: () => void;
@@ -20,15 +25,15 @@ const Notify: React.FC<NotifyProps> = React.memo(({ onClose, messages }) => {
   const getIcon = (type: string) => {
     switch (type) {
       case 'success':
-        return '✔️';
+        return SuccessSVG;
       case 'error':
-        return '❌';
+        return ErrorSVG;
       case 'info':
-        return 'ℹ️';
+        return InfoSVG;
       case 'warning':
-        return '⚠️';
-      default:
-        return '';
+        return WarningSVG;
+      default: NotificationSVG
+        return;
     }
   };
 
@@ -89,7 +94,7 @@ const Notify: React.FC<NotifyProps> = React.memo(({ onClose, messages }) => {
           className={`notify-message ${message.type} message-${3 - index} ${removingMessage === message.id || removeAll ? 'message-remove' : ''}`}
           style={expanded ? { bottom: `${(toastMessages.length - 1 - index) * 5}rem`, filter: 'brightness(100%)' } : {}}
         >
-          <span className="message-icon">{getIcon(message.type)}</span>
+          <img className="message-icon" src={getIcon(message.type)} />
           <div className="message-content">
             <div className='message-title'>{message.title}</div>
             <div className='message'>{truncateMessage(message.message)}</div>
