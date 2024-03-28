@@ -1,7 +1,8 @@
 
 export interface NotifyMessageType {
-    id: number;
-    title: string;
-    message: string;
-    type: 'success' | 'error' | 'info' | 'warning';
-  }
+  id: number;
+  title: string;
+  message: string;
+  type: 'success' | 'error' | 'info' | 'warning';
+  timeStamp?: number;
+}

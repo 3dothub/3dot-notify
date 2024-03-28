@@ -11,15 +11,27 @@ import InfoSVG from '../../assets/info.svg'
 
 interface NotifyProps {
   onClose: () => void;
-  messages: NotifyMessageType[];
+  messages: NotifyMessageType | null;
 }
 
 const Notify: React.FC<NotifyProps> = React.memo(({ onClose, messages }) => {
   const [expanded, setExpanded] = useState<boolean>(false);
   const [removeAll, setRemoveAll] = useState<boolean>(false);
-  const [toastMessages, setToastMessages] = useState<NotifyMessageType[]>(messages);
+  const [toastMessages, setToastMessages] = useState<NotifyMessageType[]>([]);
   const [removingMessage, setRemovingMessage] = useState<number>()
   const notifyRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    if (messages) {
+      setTimeout(() => {
+        const toastValue = { ...messages }
+        setToastMessages(prevMessages => {
+          const updatedMessages = [toastValue, ...prevMessages.slice(0, 3)]; // its only store new 4 messages
+          return updatedMessages;
+        });
+      }, 250);
+    }
+  }, [messages])
 
 
   const getIcon = (type: string) => {
@@ -74,6 +86,7 @@ const Notify: React.FC<NotifyProps> = React.memo(({ onClose, messages }) => {
       setExpanded(!expanded)
     }
   };
+
 
   return (
     <div ref={notifyRef} id={`${expanded ? 'notify-expanded' : 'notify'}`}>
