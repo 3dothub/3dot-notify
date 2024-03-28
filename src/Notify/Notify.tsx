@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 import './Notify.css';
-import { NotifyMessageType } from '../../types';
+import { NotifyMessageType } from '../types';
 import CancelSVG from '../../assets/cancel.svg';
 import ExpandSVG from '../../assets/expand.svg';
 import SuccessSVG from '../../assets/success.svg'
