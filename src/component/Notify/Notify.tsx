@@ -10,11 +10,10 @@ import NotificationSVG from '../../assets/notification.svg'
 import InfoSVG from '../../assets/info.svg'
 
 interface NotifyProps {
-  onClose: () => void;
   messages: NotifyMessageType | null;
 }
 
-const Notify: React.FC<NotifyProps> = React.memo(({ onClose, messages }) => {
+const Notify: React.FC<NotifyProps> = React.memo(({ messages }) => {
   const [expanded, setExpanded] = useState<boolean>(false);
   const [removeAll, setRemoveAll] = useState<boolean>(false);
   const [toastMessages, setToastMessages] = useState<NotifyMessageType[]>([]);
