@@ -4,7 +4,7 @@
     "type": "git",
     "url": "https://github.com/3dothub/3dot-notify.git"
   },
-  "version": "0.0.1",
+  "version": "0.1.0",
   "description": "A component library for getting people started with easy to re-use components for everyday projects.",
   "main": "src/index.ts",
   "module": "src/index.ts",
