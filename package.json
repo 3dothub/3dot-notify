@@ -1,10 +1,10 @@
 {
-  "name": "3dothub",
+  "name": "3dothub2",
   "repository": {
     "type": "git",
     "url": "https://github.com/3dothub/3dot-notify.git"
   },
-  "version": "0.1.0",
+  "version": "0.0.1",
   "description": "A component library for getting people started with easy to re-use components for everyday projects.",
   "main": "src/index.ts",
   "module": "src/index.ts",
@@ -13,7 +13,8 @@
     "build:esm": "tsc",
     "build:cjs": "tsc --module CommonJS --outDir dist/cjs",
     "storybook": "storybook dev -p 6006",
-    "build-storybook": "storybook build"
+    "build-storybook": "storybook build",
+    "publish": "mpm version patch && npm publish"
   },
   "author": "Naraja",
   "license": "MIT",
@@ -46,13 +47,12 @@
     "typescript": "^4.5.2",
     "webpack": "^5.91.0",
     "webpack-cli": "^5.1.4",
-    "webpack-dev-server": "^5.0.4"
+    "webpack-dev-server": "^5.0.4",
+    "@vitejs/plugin-react-swc": "^3.6.0"
   },
   "peerDependencies": {
     "react": "^18.2.0",
     "react-dom": "^18.2.0"
   },
-  "dependencies": {
-    "@vitejs/plugin-react-swc": "^3.6.0"
-  }
+  "dependencies": {}
 }
