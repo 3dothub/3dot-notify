@@ -1,33 +1,58 @@
 {
   "name": "3dothub",
-  "private": false,
-  "version": "2.6.0",
-  "type": "module",
-  "main": "src/index.tsx",
-  "modules": "src/index.tsx",
-  "types": "src/types/index.d.ts",
-  "scripts": {
-    "dev": "vite",
-    "build": "tsc && vite build",
-    "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
-    "preview": "vite preview",
-    "publish": "npm version minor && npm publish"
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/3dothub/3dot-notify.git"
   },
-  "dependencies": {
+  "version": "3.0.7",
+  "description": "A component library for getting people started with easy to re-use components for everyday projects.",
+  "main": "src/index.ts",
+  "module": "src/index.ts",
+  "scripts": {
+    "build": "webpack --mode production",
+    "build:esm": "tsc",
+    "build:cjs": "tsc --module CommonJS --outDir dist/cjs",
+    "storybook": "storybook dev -p 6006",
+    "build-storybook": "storybook build"
+  },
+  "author": "Naraja",
+  "license": "MIT",
+  "devDependencies": {
+    "@babel/core": "^7.24.3",
+    "@babel/preset-env": "^7.24.3",
+    "@babel/preset-react": "^7.24.1",
+    "@babel/preset-typescript": "^7.24.1",
+    "@chromatic-com/storybook": "^1.3.2",
+    "@storybook/addon-essentials": "^8.0.8",
+    "@storybook/addon-interactions": "^8.0.8",
+    "@storybook/addon-links": "^8.0.8",
+    "@storybook/addon-onboarding": "^8.0.8",
+    "@storybook/blocks": "^8.0.8",
+    "@storybook/react": "^8.0.8",
+    "@storybook/react-vite": "^8.0.8",
+    "@storybook/test": "^8.0.8",
+    "@types/node": "^20.11.30",
+    "@types/react": "^18.2.73",
+    "@types/react-dom": "^17.0.11",
+    "babel-loader": "^9.1.3",
+    "css-loader": "^6.10.0",
+    "eslint-plugin-storybook": "^0.8.0",
+    "file-loader": "^6.2.0",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "storybook": "^8.0.8",
+    "style-loader": "^3.3.4",
+    "svg-inline-loader": "^0.8.2",
+    "typescript": "^4.5.2",
+    "webpack": "^5.91.0",
+    "webpack-cli": "^5.1.4",
+    "webpack-dev-server": "^5.0.4"
+  },
+  "peerDependencies": {
     "react": "^18.2.0",
     "react-dom": "^18.2.0"
   },
-  "devDependencies": {
-    "@types/react": "^18.2.66",
-    "@types/react-dom": "^18.2.22",
-    "@typescript-eslint/eslint-plugin": "^7.2.0",
-    "@typescript-eslint/parser": "^7.2.0",
-    "@vitejs/plugin-react-swc": "^3.5.0",
-    "eslint": "^8.57.0",
-    "eslint-plugin-react-hooks": "^4.6.0",
-    "eslint-plugin-react-refresh": "^0.4.6",
-    "rollup": "^4.13.2",
-    "typescript": "^5.2.2",
-    "vite": "^5.2.0"
+  "dependencies": {
+    "@vitejs/plugin-react-swc": "^3.6.0"
   }
 }

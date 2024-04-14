@@ -2,6 +2,8 @@
     position: fixed;
     bottom: 0rem;
     right: 1rem;
+    text-align: start;
+    transition: bottom 0.5s ease, filter 0.5s ease, opacity 0.5s ease, right 0.5s ease, width 0.5s ease-out;
 }
 
 .notify-message {
@@ -19,18 +21,18 @@
     overflow: hidden;
     max-height: 4rem;
     width: 26rem;
-    opacity: 1;
-    transition: bottom 0.5s ease, filter 0.5s ease, opacity 0.2s ease, right 0.5s ease, width 0.5s ease-out;
+    opacity: 100%;
+    transition: bottom 0.5s ease, filter 0.5s ease, opacity 0.5s ease, right 0.5s ease, width 0.5s ease-out;
 }
 
-.timestamp{
+.timestamp {
     font-weight: 600;
     font-size: smaller;
 }
 
 .message-remove {
     position: absolute;
-    right: 20% !important;
+    right: 2rem !important;
     opacity: 0;
 }
 
@@ -45,7 +47,8 @@
     box-shadow: 0px 0px 0.3125rem 0px rgba(0, 0, 0, 0.2);
     right: 0rem;
 }
-.message-content{
+
+.message-content {
     flex: 1;
 }
 
@@ -53,11 +56,12 @@
     position: absolute;
     bottom: 0rem;
     right: 1rem;
+    text-align: start;
 }
 
 #notify-expanded .notify-message {
     width: 30rem;
-    right: 1rem;
+    right: 0rem;
 }
 
 #notify-expanded .message {

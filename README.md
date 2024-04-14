@@ -1,22 +1,9 @@
-## What is this?
+# React Component Library
 
-A 3dot-notify 
+![N|Solid](https://lh3.googleusercontent.com/a-/AOh14GglnMoBPixoeH-IwaCWx7SpehtvYTPowns21fVO=s200-k-no-rp-mo)
 
-##Installation
+Learn how to make a component library!  Link is in the repository description.
 
-Run `npm i 3dothub`
-
-Use:
-
-```
-import {Notify} from '3dothub';
-const message = {
-      id: 1,
-      title: "Error",
-      message: "An error occurred",
-      type: "error"
-    },
-<Notify messages={message}>;
-
-```
-
+License
+----
+MIT
