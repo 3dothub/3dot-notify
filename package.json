@@ -14,7 +14,7 @@
     "build:cjs": "tsc --module CommonJS --outDir dist/cjs",
     "storybook": "storybook dev -p 6006",
     "build-storybook": "storybook build",
-    "publish": "mpm version patch && npm publish"
+    "publish": "npm version patch && npm publish"
   },
   "author": "Naraja",
   "license": "MIT",
