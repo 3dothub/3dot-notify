@@ -24,10 +24,12 @@
         "target": "es6"
     },
     "include": [
-        "src/**/*.ts",
-        "src/**/*.tsx"
+        "src/component/**/*"
     ],
     "exclude": [
+        "src/component/**/*.stories.tsx",
+        "src/component/**/*.test.ts",
+        "src/component/**/*.test.tsx",
         "test-package/**/*"
     ],
     "files": [
